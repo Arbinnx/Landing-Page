@@ -104,7 +104,7 @@ function initForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
 
     const btn     = form.querySelector('.btn-solid');
@@ -116,14 +116,27 @@ function initForm() {
     spin.classList.remove('d-none');
     btn.disabled = true;
 
-    setTimeout(() => {
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        success.classList.remove('d-none');
+        form.reset();
+        setTimeout(() => success.classList.add('d-none'), 5000);
+      } else {
+        alert('Something went wrong. Please email me directly at zekoameti6@gmail.com');
+      }
+    } catch {
+      alert('Network error. Please try again or email me directly.');
+    } finally {
       txt.classList.remove('d-none');
       spin.classList.add('d-none');
       btn.disabled = false;
-      success.classList.remove('d-none');
-      form.reset();
-      setTimeout(() => success.classList.add('d-none'), 5000);
-    }, 1600);
+    }
   });
 }
 

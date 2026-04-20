@@ -227,6 +227,7 @@ section { padding:110px 0 }
 }
 
 /* hamburger → X animation */
+.nav-toggle.open span { background: #fff }
 .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg) }
 .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0) }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) }
@@ -1029,4 +1030,27 @@ section { padding:110px 0 }
   .hstat-sep { display: none }
   .sk-grid { grid-template-columns: 1fr }
   .contact-right { padding: 24px 20px }
+}
+
+/* prevent iOS Safari zoom on input focus (triggers when font-size < 16px) */
+@media (max-width: 767px) {
+  .cform-group input,
+  .cform-group select,
+  .cform-group textarea {
+    font-size: 16px;
+  }
+}
+
+/* disable hover transforms on touch devices — prevents tap "jump" glitch */
+@media (hover: none) {
+  .btn-solid:hover,
+  .btn-outline:hover,
+  .nav-cta:hover,
+  .svc-card:hover,
+  .step-item:hover,
+  .sk-card:hover,
+  .clink:hover,
+  .btt:hover {
+    transform: none;
+  }
 }

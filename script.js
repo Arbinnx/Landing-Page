@@ -128,7 +128,7 @@ function initForm() {
         form.reset();
         setTimeout(() => success.classList.add('d-none'), 5000);
       } else {
-        alert('Something went wrong. Please email me directly at zekoameti6@gmail.com');
+        alert('Something went wrong. Please email me directly at a.projeects@gmail.com');
       }
     } catch {
       alert('Network error. Please try again or email me directly.');

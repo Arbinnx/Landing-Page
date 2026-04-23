@@ -817,7 +817,6 @@ section { padding:110px 0 }
 .ft-cta-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 32px;
   flex-wrap: wrap;
 }
